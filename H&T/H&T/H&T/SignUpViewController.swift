@@ -59,32 +59,39 @@ class SignUpViewController: UIViewController {
             request.httpBody = body.data(using: String.Encoding.utf8)
             
             
-            //STEP4 : lancement de la requête
-            URLSession.shared.dataTask(with: request, completionHandler: { (data: Data?, response:URLResponse?, error: Error?) in
-                if error == nil{
-                    //Préparation de la requête
-                    DispatchQueue.main.async {
-                        do{
-                            let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
-                            
-                            guard let parseJson = json else{
-                                print("Error while parsing")
-                                return
+            if passwordTextField.text != confirmPasswordTextField.text{
+                var myAlert = UIAlertController(title: "Erreur", message: "Les mots de passes ne coresspondent pas, vueillez saisir les bons mots de passes !", preferredStyle: UIAlertControllerStyle.alert)
+                myAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(myAlert, animated: true, completion: nil)
+            }else{
+                //STEP4 : lancement de la requête
+                URLSession.shared.dataTask(with: request, completionHandler: { (data: Data?, response:URLResponse?, error: Error?) in
+                    if error == nil{
+                        //Préparation de la requête
+                        DispatchQueue.main.async {
+                            do{
+                                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
+                                
+                                guard let parseJson = json else{
+                                    print("Error while parsing")
+                                    return
+                                }
+                                
+                                let id = parseJson["id"]
+                                if id != nil{
+                                    print(parseJson)
+                                }
+                            }catch{
+                                print("Caught an error \(error)")
                             }
-                            
-                            let id = parseJson["id"]
-                            if id != nil{
-                                print(parseJson)
-                            }
-                        }catch{
-                            print("Caught an error \(error)")
                         }
+                    }else{
+                        print("Error: \(error)")
                     }
-                }else{
-                    print("Error: \(error)")
-                }
-                //Lancement de la requête
-            }).resume()
+                    //Lancement de la requête
+                }).resume()
+            }
+            
             
             
         }
