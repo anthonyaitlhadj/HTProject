@@ -11,7 +11,7 @@
         <scene sceneID="nEj-ZS-I80">
             <objects>
                 <navigationController id="bdf-7T-BDu" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jti-qv-FYR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jti-qv-FYR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -226,6 +226,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sKu-GI-OrU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2034.4000000000001" y="618.44077961019491"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="OHz-Mi-G4q">
+            <objects>
+                <viewController id="rZj-8Q-KUo" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hFY-ZD-7Cm"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ahv-Ub-Dz9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TvB-v2-ilg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cwG-pt-p1w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2846" y="618"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
