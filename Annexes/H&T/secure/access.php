@@ -73,6 +73,22 @@ class access{
 
         return $returnArray;
     }
+
+    public function getLoginInformations($username){
+        //Requête à exécuter
+        $query = "SELECT * from users WHERE username='".$username."' ";
+        //Execution de a requête grâce à 'query'
+        $res = $this->conn->query($query);
+
+        if ($res != null && (mysqli_num_rows($res) >= 1) ){
+            $row = $res->fetch_array(MYSQLI_ASSOC);
+            if (!empty($row)){
+                $returnArray = $row;
+            }
+        }
+
+        return $returnArray;
+    }
 }
 ?>
 
