@@ -10,6 +10,7 @@ import UIKit
 
 class SignInViewController: UIViewController {
     
+    let userInfo: UserDefaults = UserDefaults.standard
     
     @IBOutlet weak var usernameTextField: UITextField!
     
@@ -26,8 +27,18 @@ class SignInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        let userLogged:Int = userInfo.integer(forKey: "estCo") as Int
+        
+        if userLogged == 1 {
+            print("LoggedIn : \(userLogged)")
+            self.performSegue(withIdentifier: "goToCategories", sender: self)
+        }
+    }
+    
 
-    @IBAction func loginAction(_ sender: UIButton) {
+    @IBAction func loginAction(_ sender: AnyObject) {
         if usernameTextField.text!.isEmpty || passwordTextField.text!.isEmpty
         {
             
@@ -39,40 +50,52 @@ class SignInViewController: UIViewController {
             let url = URL(string: "http://localhost:8888/H&T/login.php")!
             var request = URLRequest(url: url)
             
-            request.httpMethod = "GET"
+            request.httpMethod = "POST"
             
-            let body = "username=\(usernameTextField.text!.lowercased())"
+            let body = "username=\(usernameTextField.text!.lowercased())&password=\(passwordTextField.text!)"
             request.httpBody = body.data(using: String.Encoding.utf8)
             
-            URLSession.shared.dataTask(with: request, completionHandler: { (data: Data?, response:URLResponse?, error: Error?) in
+            URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
                 if error == nil{
                     //Préparation de la requête
-                    DispatchQueue.main.async {
-                        do{
-                            let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
-                            
-                            guard let parseJson = json else{
-                                print("Error while parsing")
-                                return
-                            }
-                            
-                            let id = parseJson["id"]
-                            if id != nil{
-                                print(parseJson)
-                            }
-                        }catch{
-                            print("Caught an error \(error)")
+                    do{
+                        let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
+                        
+                        guard let parseJson = json else{
+                            print("************************************")
+                            print("Error while parsing")
+                            return
                         }
-                    }
-                }else{
+                        
+                        let id = parseJson["id"]
+                        
+                        if id != nil{
+                            print("************************************")
+                            print(parseJson)
+                            
+                            let username = parseJson["username"] as! String
+                            let firstname = parseJson["firstname"] as! String
+                            let lastname = parseJson["lastname"] as! String
+                            
+                            self.userInfo.setValue(id, forKey: "ID")
+                            self.userInfo.setValue(username, forKey: "Pseudo")
+                            self.userInfo.setValue(firstname, forKey: "Prenom")
+                            self.userInfo.setValue(lastname, forKey: "Nom")
+                            self.userInfo.setValue(1, forKey: "estCo")
+                            self.userInfo.synchronize()
+                            
+                            self.performSegue(withIdentifier: "goToCategories", sender: self)
+                        }
+                        
+                    }catch{
+                        print("************************************")
+                        print("Caught an error \(error)")
+                    }                }else{
                     print("Error: \(error)")
                 }
                 //Lancement de la requête
             }).resume()
             
-            performSegue(withIdentifier: "goToCategories", sender: self)
-
         }
-        
     }
 }

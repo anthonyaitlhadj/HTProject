@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2AACCD1F1E08C25900E06AD4 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AACCD1E1E08C25900E06AD4 /* CategoriesViewController.swift */; };
+		2AAE88AF1E000068005816F1 /* TchatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAE88AE1E000068005816F1 /* TchatViewController.swift */; };
 		8B18530D1DF7766A001295D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B18530C1DF7766A001295D0 /* AppDelegate.swift */; };
 		8B18530F1DF7766A001295D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B18530E1DF7766A001295D0 /* ViewController.swift */; };
 		8B1853121DF7766A001295D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B1853101DF7766A001295D0 /* Main.storyboard */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2AACCD1E1E08C25900E06AD4 /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
+		2AAE88AE1E000068005816F1 /* TchatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TchatViewController.swift; sourceTree = "<group>"; };
 		8B1853091DF7766A001295D0 /* H&T.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "H&T.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B18530C1DF7766A001295D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B18530E1DF7766A001295D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +65,8 @@
 				8B18530C1DF7766A001295D0 /* AppDelegate.swift */,
 				8B18530E1DF7766A001295D0 /* ViewController.swift */,
 				8B1853101DF7766A001295D0 /* Main.storyboard */,
+				2AACCD1E1E08C25900E06AD4 /* CategoriesViewController.swift */,
+				2AAE88AE1E000068005816F1 /* TchatViewController.swift */,
 				8B18531E1DF7781A001295D0 /* SignUpViewController.swift */,
 				8B1853201DF7782E001295D0 /* SignInViewController.swift */,
 				8B1853131DF7766A001295D0 /* Assets.xcassets */,
@@ -144,6 +150,8 @@
 			files = (
 				8B1853211DF7782E001295D0 /* SignInViewController.swift in Sources */,
 				8B18531F1DF7781A001295D0 /* SignUpViewController.swift in Sources */,
+				2AACCD1F1E08C25900E06AD4 /* CategoriesViewController.swift in Sources */,
+				2AAE88AF1E000068005816F1 /* TchatViewController.swift in Sources */,
 				8B18530F1DF7766A001295D0 /* ViewController.swift in Sources */,
 				8B18530D1DF7766A001295D0 /* AppDelegate.swift in Sources */,
 			);
@@ -307,6 +315,7 @@
 				8B18531D1DF7766B001295D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
