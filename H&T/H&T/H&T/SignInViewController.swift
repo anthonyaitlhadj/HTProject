@@ -68,7 +68,7 @@ class SignInViewController: UIViewController {
                         }
                         
                         let id = parseJson["id"]
-                        
+                        print("parseJSON: \(id)")
                         if id != nil{
                             print("************************************")
                             print(parseJson)
@@ -83,18 +83,18 @@ class SignInViewController: UIViewController {
                             self.userInfo.setValue(lastname, forKey: "Nom")
                             self.userInfo.setValue(1, forKey: "estCo")
                             self.userInfo.synchronize()
-                            
-                            self.performSegue(withIdentifier: "goToCategories", sender: self)
                         }
                         
                     }catch{
                         print("************************************")
                         print("Caught an error \(error)")
-                    }                }else{
+                    }
+                }else{
                     print("Error: \(error)")
                 }
                 //Lancement de la requête
             }).resume()
+            self.performSegue(withIdentifier: "goToCategories", sender: self)
             
         }
     }
