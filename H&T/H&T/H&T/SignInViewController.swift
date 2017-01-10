@@ -12,9 +12,9 @@ class SignInViewController: UIViewController {
     
     let userInfo: UserDefaults = UserDefaults.standard
     
+    @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
     
-    @IBOutlet weak var passwordTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,14 +39,18 @@ class SignInViewController: UIViewController {
     
 
     @IBAction func loginAction(_ sender: AnyObject) {
+        print("Etape 1")
         if usernameTextField.text!.isEmpty || passwordTextField.text!.isEmpty
         {
-            
+            print("ERREUR: rien a été tapé")
+
             usernameTextField.attributedPlaceholder = NSAttributedString(string: "Pseudo", attributes: [NSForegroundColorAttributeName: UIColor.red])
             
             passwordTextField.attributedPlaceholder = NSAttributedString(string: "Mot de passe", attributes: [NSForegroundColorAttributeName: UIColor.red])
             
         }else{
+            print("Etape 2: on récupère le lien")
+
             let url = URL(string: "http://localhost:8888/H&T/login.php")!
             var request = URLRequest(url: url)
             
@@ -57,10 +61,14 @@ class SignInViewController: UIViewController {
             
             URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
                 if error == nil{
+                    print("Etape 3: execution de la tâche")
+
                     //Préparation de la requête
                     do{
+                        print("Etape 3.1: Exécution du 'do'")
+
                         let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
-                        
+                        print("Data renvoyée: \(json)")
                         guard let parseJson = json else{
                             print("************************************")
                             print("Error while parsing")
@@ -68,7 +76,8 @@ class SignInViewController: UIViewController {
                         }
                         
                         let id = parseJson["id"]
-                        
+                        print("Etape 3.2: parseJSON: \(id)")
+
                         if id != nil{
                             print("************************************")
                             print(parseJson)
@@ -84,17 +93,19 @@ class SignInViewController: UIViewController {
                             self.userInfo.setValue(1, forKey: "estCo")
                             self.userInfo.synchronize()
                             
-                            self.performSegue(withIdentifier: "goToCategories", sender: self)
+                            
                         }
                         
                     }catch{
                         print("************************************")
                         print("Caught an error \(error)")
-                    }                }else{
+                    }
+                }else{
                     print("Error: \(error)")
                 }
                 //Lancement de la requête
             }).resume()
+            //self.performSegue(withIdentifier: "goToCategories", sender: self)
             
         }
     }

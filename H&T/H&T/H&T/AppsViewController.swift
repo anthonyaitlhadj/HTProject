@@ -10,6 +10,8 @@ import UIKit
 
 class AppsViewController: UIViewController
 {
+     let userInfo: UserDefaults = UserDefaults.standard
+    
     @IBOutlet weak var tableView: UITableView!
  
     var apps = AllApps.getAllApps()
@@ -22,6 +24,14 @@ class AppsViewController: UIViewController
         tableView.estimatedRowHeight = 376
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.reloadData()
+        
+        
+        let userLogged:Int = userInfo.integer(forKey: "estCo") as Int
+        
+        if userLogged == 1 {
+            print("LoggedIn : \(userLogged)")
+            //self.performSegue(withIdentifier: "goToCategories", sender: self)
+        }
     }
 }
 
