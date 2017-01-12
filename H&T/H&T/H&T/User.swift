@@ -10,6 +10,6 @@ import UIKit
 
 class User: NSObject {
     var firstname: String?
-    var lastname: String?
+    var user_id: String?
     var username: String?
 }

@@ -13,6 +13,7 @@ class TchatViewController: UIViewController, UITableViewDelegate, UITableViewDat
     let userInfo: UserDefaults = UserDefaults.standard
     
     var users: [User]? = []
+    var users_id = [String]()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -20,15 +21,19 @@ class TchatViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         tableView.dataSource = self
         getAllUsersToMessageWith()
-
+        //retrieveLastMessage()
+        tableView.reloadData()
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
         print("******************************************")
-        print("Nombre de users: \(users!.count)")
+        print("Nombre de users: \(users?.count)")
         print("******************************************")
         tableView.reloadData()
+        print("******************************************")
+        print("Nombre de users: \(users_id)")
+        print("******************************************")
     }
     
     //Affichage de tous les users
@@ -42,41 +47,26 @@ class TchatViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }else{
                 if let content = data{
                     do{
-                        /*let myJson = try JSONSerialization.jsonObject(with: content, options: .mutableContainers) as AnyObject
-                        let usersCount = myJson.count!
-                        var index = 0
-                        while index < usersCount{
-                            if let user = myJson[index] as? NSDictionary{
-                                /*let lastname = user["lastname"]!
-                                self.users.updateValue(lastname, forKey: index)
-                                
-                                let firstname = user["firstname"]!
-                                self.users.updateValue(firstname, forKey: "firstname")*/
-                                
-                                let username = user["username"]!
-                                self.users[index] = username
-                                print("Dictionary: \(self.users.values)")
-                            }
-                            index = index+1
-                        }*/
                         let myJson = try JSONSerialization.jsonObject(with: content, options: .mutableContainers) as! [String:AnyObject]
+                        print(content)
                         if let usersFromJson = myJson["users"] as? [[String:AnyObject]]{
                             for userFromJson in usersFromJson{
                                 let user = User()
-                                if let firstname = userFromJson["firstname"] as? String, let lastname = userFromJson["lastname"] as? String, let username = userFromJson["username"] as? String{
+                                if let firstname = userFromJson["firstname"] as? String, let user_id = userFromJson["user_id"] as? String, let username = userFromJson["username"] as? String{
                                     user.firstname = firstname
-                                    user.lastname = lastname
+                                    user.user_id = user_id
                                     user.username = username
                                     print("******************************************")
                                     print("Firstname: \(user.firstname!)")
-                                    print("Lasstname: \(user.lastname!)")
+                                    print("User_id: \(user.user_id!)")
                                     print("username: \(user.username!)")
                                     print("******************************************")
+                                    self.users_id.append(user.user_id!)
                                 }
                                 self.users?.append(user)
                             }
                         }
-                        self.tableView.reloadData()
+                        //self.tableView.reloadData()
                     }catch{
                         print("******************************************")
                         print("Error caught on: \(error)")
@@ -87,50 +77,55 @@ class TchatViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
         }
         task.resume()
-
-        /*do{
-            let dataToRetrieve = try Data(contentsOf: url)
-            users = try JSONSerialization.jsonObject(with: dataToRetrieve, options: .mutableContainers) as! NSArray
-            print("******************************************")
-            print("Il y a \(users.count) users")
-            print("******************************************")
-            //print(users[0])
-            for user in users {
-                print("User found !")
-                print(user)
-            }
-            
-        }catch{
-            print("******************************************")
-            print("Erreur: \(error.localizedDescription)")
-            print("******************************************")
-        }*/
-        
-        
     }
     
+    func retrieveLastMessage(){
+        let url = URL(string: "http://localhost:8888/H&T/getLastMessage.php")!
+        var request = URLRequest(url: url)
+        
+        //STEP2 : Méthode que l'on utilise ==> method POST
+        request.httpMethod = "POST"
+        
+        //STEP3 : body rattaché à l'url
+        let body = "?sending_user_id=\(userInfo.value(forKey: "ID"))&receiving_user_id=\(users_id[3])"
+        request.httpBody = body.data(using: String.Encoding.utf8)
+        
+        let task = URLSession.shared.dataTask(with: url){ (data, response, error) in
+            if error != nil{
+                print("******************************************")
+                print("Erreur: \(error)")
+                print("******************************************")
+            }else{
+                do{
+                    let myJson = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
+                    
+                    guard let parsedJson = myJson else{
+                        print("************************************")
+                        print("Error while parsing")
+                        return
+                    }
+                    let id = parsedJson["id"]
+                    if id != nil{
+                        print("************************************")
+                        print("Données: \(parsedJson)")
+                        print("************************************")
+                    }
+                }catch{
+                    print("******************************************")
+                    print("Erreur trouvée :\(error)!!!!")
+                    print("******************************************")
+                }
+            }
+        }
+        task.resume()
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.users?.count ?? 0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "connectedUsers", for: indexPath) as! SpecialTableViewCell
-        //let userCount = users.count
-        //var indexes = 0
-        print("******************************************")
-        print("User: \(users?.count)")
-        print("******************************************")
-        /*while indexes < userCount {
-            /*cell.textLabel?.text = "Nom"//mainData[index] as! String?
-            cell.imageView?.image = UIImage(named: "user_male")*/
-            cell.imgView.image = UIImage(named: "user_male")
-            cell.usernameLabel.text = "USERNAME"//mainData[indexes] as! String
-            indexes = indexes+1
-        }*/
-        //cell.imgView.image = UIImage(named: "user_male")
-        //cell.usernameLabel.text = "USERNAME"
         cell.usernameLabel.text = self.users?[indexPath.item].username
         cell.imgView.image = UIImage(named: "user_male")
-        cell.lastMessageLabel.text = "Salut"
         return cell
     }
     func numberOfSections(in tableView: UITableView) -> Int {

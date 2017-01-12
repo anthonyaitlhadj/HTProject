@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2A1EBB7C1E16FDAE00ECA785 /* SpecialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1EBB7B1E16FDAE00ECA785 /* SpecialTableViewCell.swift */; };
+		2A6E53871E26C6D50085BFAE /* TalkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6E53861E26C6D50085BFAE /* TalkingViewController.swift */; };
 		2AACCD1F1E08C25900E06AD4 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AACCD1E1E08C25900E06AD4 /* CategoriesViewController.swift */; };
 		2AAE88AF1E000068005816F1 /* TchatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAE88AE1E000068005816F1 /* TchatViewController.swift */; };
 		2ABF29A41E22BB57004EF71C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABF29A31E22BB57004EF71C /* User.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		2A1EBB7B1E16FDAE00ECA785 /* SpecialTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialTableViewCell.swift; sourceTree = "<group>"; };
+		2A6E53861E26C6D50085BFAE /* TalkingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TalkingViewController.swift; sourceTree = "<group>"; };
 		2AACCD1E1E08C25900E06AD4 /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		2AAE88AE1E000068005816F1 /* TchatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TchatViewController.swift; sourceTree = "<group>"; };
 		2ABF29A31E22BB57004EF71C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				8B18530C1DF7766A001295D0 /* AppDelegate.swift */,
 				8B18530E1DF7766A001295D0 /* ViewController.swift */,
 				8B1853101DF7766A001295D0 /* Main.storyboard */,
+				2A6E53861E26C6D50085BFAE /* TalkingViewController.swift */,
 				2AACCD1E1E08C25900E06AD4 /* CategoriesViewController.swift */,
 				2AAE88AE1E000068005816F1 /* TchatViewController.swift */,
 				2ABF29A31E22BB57004EF71C /* User.swift */,
@@ -160,6 +163,7 @@
 				2AACCD1F1E08C25900E06AD4 /* CategoriesViewController.swift in Sources */,
 				2ABF29A41E22BB57004EF71C /* User.swift in Sources */,
 				2AAE88AF1E000068005816F1 /* TchatViewController.swift in Sources */,
+				2A6E53871E26C6D50085BFAE /* TalkingViewController.swift in Sources */,
 				8B18530F1DF7766A001295D0 /* ViewController.swift in Sources */,
 				8B18530D1DF7766A001295D0 /* AppDelegate.swift in Sources */,
 			);

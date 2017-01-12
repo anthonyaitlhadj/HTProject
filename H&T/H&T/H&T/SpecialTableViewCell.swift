@@ -13,7 +13,6 @@ class SpecialTableViewCell: UITableViewCell {
     
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var lastMessageLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
