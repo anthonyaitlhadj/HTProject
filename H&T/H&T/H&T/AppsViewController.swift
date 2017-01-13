@@ -21,7 +21,7 @@ class AppsViewController: UIViewController
     }
     override func viewDidAppear(_ animated: Bool) {
         tableView.dataSource = self
-        tableView.estimatedRowHeight = 376
+        tableView.estimatedRowHeight = 370
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.reloadData()
         

@@ -36,7 +36,7 @@ class TalkingViewController: UIViewController {
         request.httpMethod = "POST"
         
         //STEP3 : body rattaché à l'url
-        let body = "sending_username_id=\(sender_id)&message=\(message)&receiving_username_id=\(3)"
+        let body = "sending_username_id=\(sender_id)&message=\(message)&receiving_username_id=\(8)"
         request.httpBody = body.data(using: String.Encoding.utf8)
         
         let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in

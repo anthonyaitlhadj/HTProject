@@ -31,9 +31,6 @@ class TchatViewController: UIViewController, UITableViewDelegate, UITableViewDat
         print("Nombre de users: \(users?.count)")
         print("******************************************")
         tableView.reloadData()
-        print("******************************************")
-        print("Nombre de users: \(users_id)")
-        print("******************************************")
     }
     
     //Affichage de tous les users

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,7 +15,7 @@
         <scene sceneID="nEj-ZS-I80">
             <objects>
                 <navigationController id="bdf-7T-BDu" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jti-qv-FYR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jti-qv-FYR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -226,7 +227,7 @@
         <!--Catégories-->
         <scene sceneID="vXn-qo-A33">
             <objects>
-                <viewController title="Catégories" id="qDG-w6-XV2" customClass="CategoriesViewController" customModule="H_T" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Catégories" id="qDG-w6-XV2" customClass="AppsViewController" customModule="H_T" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CGC-K7-iw8"/>
                         <viewControllerLayoutGuide type="bottom" id="h0h-T3-y56"/>
@@ -235,40 +236,72 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5B7-a7-keH">
-                                <rect key="frame" x="168" y="311" width="39" height="30"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="afQ-Rk-NSY">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="775"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Tchat"/>
-                                <connections>
-                                    <segue destination="rZj-8Q-KUo" kind="show" id="3Wb-qI-OKm"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BFC-QW-4Wf">
-                                <rect key="frame" x="16" y="590" width="343" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdE-X4-bId">
-                                <rect key="frame" x="161" y="629" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Logout"/>
-                                <connections>
-                                    <action selector="signout:" destination="qDG-w6-XV2" eventType="touchUpInside" id="5JM-J0-vJ5"/>
-                                </connections>
-                            </button>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AppCell" rowHeight="376" id="yQM-Dt-2VN" customClass="AppTableViewCell" customModule="H_T" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="376"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yQM-Dt-2VN" id="gyD-uQ-Jdh">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="musique" translatesAutoresizingMaskIntoConstraints="NO" id="sTn-BK-wSM">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="375.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="sTn-BK-wSM" secondAttribute="height" multiplier="1:1" id="Gyo-bu-zH0"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Build News Reader App with UICollectionView" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79z-E7-WnQ">
+                                                    <rect key="frame" x="8" y="302" width="242" height="57.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="242" id="hA6-e1-XFU"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="21"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lKy-VL-Js1">
+                                                    <rect key="frame" x="317" y="302" width="58" height="33"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <state key="normal" title="Tchat">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <segue destination="rZj-8Q-KUo" kind="show" id="FUp-2F-aku"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="sTn-BK-wSM" secondAttribute="bottom" identifier="AppCell" id="7FL-hx-nHX"/>
+                                                <constraint firstAttribute="trailing" secondItem="sTn-BK-wSM" secondAttribute="trailing" id="FBm-0C-6Hr"/>
+                                                <constraint firstAttribute="bottom" secondItem="79z-E7-WnQ" secondAttribute="bottom" constant="16" id="Q7I-Pe-rxZ"/>
+                                                <constraint firstItem="sTn-BK-wSM" firstAttribute="top" secondItem="gyD-uQ-Jdh" secondAttribute="top" id="ZcT-Ih-CE6"/>
+                                                <constraint firstItem="sTn-BK-wSM" firstAttribute="leading" secondItem="gyD-uQ-Jdh" secondAttribute="leading" id="ebp-aS-lZb"/>
+                                                <constraint firstItem="79z-E7-WnQ" firstAttribute="leading" secondItem="gyD-uQ-Jdh" secondAttribute="leading" constant="8" id="hRq-bG-bqT"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="appImageView" destination="sTn-BK-wSM" id="Z6B-WJ-uJa"/>
+                                            <outlet property="appNameLabel" destination="79z-E7-WnQ" id="r2v-D8-Xdh"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="userInfoLabel" destination="BFC-QW-4Wf" id="cRs-jm-7J8"/>
+                        <outlet property="tableView" destination="afQ-Rk-NSY" id="kuc-YF-YWR"/>
                         <segue destination="4wZ-Z4-xJ5" kind="show" identifier="SignOut" id="XO2-oY-e97"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sKu-GI-OrU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2988" y="618"/>
+            <point key="canvasLocation" x="2988" y="617.54122938530736"/>
         </scene>
         <!--Tchat-->
         <scene sceneID="OHz-Mi-G4q">
@@ -290,7 +323,7 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="87"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PdH-1g-scG" id="orj-jq-EJo">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="86.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="86"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user_male" translatesAutoresizingMaskIntoConstraints="NO" id="s7Z-wC-2dd">
@@ -386,6 +419,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="musique" width="1000" height="1000"/>
         <image name="user_male" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>

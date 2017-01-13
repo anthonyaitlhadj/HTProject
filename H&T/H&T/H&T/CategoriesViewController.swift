@@ -12,7 +12,7 @@ class CategoriesViewController: UIViewController {
 
     let userInfo: UserDefaults = UserDefaults.standard
     
-    //@IBOutlet weak var userInfoLabel: UILabel!
+    @IBOutlet weak var userInfoLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
