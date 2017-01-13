@@ -78,6 +78,7 @@ class SignInViewController: UIViewController {
                         let id = parseJson["id"]
                         print("Etape 3.2: parseJSON: \(id)")
 
+                        print("parseJSON: \(id)")
                         if id != nil{
                             print("************************************")
                             print(parseJson)
@@ -92,8 +93,7 @@ class SignInViewController: UIViewController {
                             self.userInfo.setValue(lastname, forKey: "Nom")
                             self.userInfo.setValue(1, forKey: "estCo")
                             self.userInfo.synchronize()
-                            
-                            
+
                         }
                         
                     }catch{
